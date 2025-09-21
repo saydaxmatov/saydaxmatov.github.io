@@ -1,28 +1,148 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="kT-SnUPF2DNxvwrfkqCYpCBqfMWWXYYsV8O6O_VTZmE" />
-    <title>Rustam202 – Shaxsiy sayt</title>
+    <title>Eng Zo'r Injiner Portfolio – Rustam Saydaxmatov</title>
+    <!-- Bootstrap CDN v5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Assalomu alaykum!</h1>
-    <h2>Men – Rustam Saydaxmatov Shamsiddin o‘g‘li</h2>
-    <p>Bu mening shaxsiy sayt sahifam. Bu yerda men haqimda ma’lumotlar bo‘ladi.</p>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Rustam202</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#about">Bosh sahifa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Malakalar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Aloqa</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <h3>Rasmim:</h3>
-    <img src="rasm.jpg" alt="Rustamning rasmi" width="300">
+    <!-- Hero Section -->
+    <section class="bg-light py-5 text-center" id="about">
+        <div class="container">
+            <img src="rasm.jpg" alt="Rustamning rasmi" class="rounded-circle mb-3" width="180">
+            <h1 class="display-4">Assalomu alaykum!</h1>
+            <h2 class="mb-3">Men – Rustam Saydaxmatov Shamsiddin o‘g‘li</h2>
+            <p class="lead">Eng yaxshi injiner. Bu mening shaxsiy portfolio sayt sahifam, bu yerda men haqimda ma’lumotlar, malakalar va ishlanmalarim bo‘ladi.</p>
+        </div>
+    </section>
 
-    <h3>Qiziqishlarim:</h3>
-    <ul>
-        <li>Dasturlash</li>
-        <li>Texnologiyalar</li>
-        <li>O‘rganish va rivojlanish</li>
-    </ul>
+    <!-- Skills Section -->
+    <section class="py-5" id="skills">
+        <div class="container">
+            <h3 class="mb-4 text-primary">Qiziqishlarim va Malakalarim</h3>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-code-slash" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mt-2">Dasturlash</h5>
+                            <p class="card-text">HTML, CSS, JavaScript, Python, C++ va Bootstrapda kuchli bilimlar.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-cpu" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mt-2">Texnologiyalar</h5>
+                            <p class="card-text">Web dasturlash, IoT, sun'iy intellekt, Linux serverlar va zamonaviy dasturiy arxitekturalar.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="bi bi-lightbulb" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mt-2">O‘rganish va rivojlanish</h5>
+                            <p class="card-text">Yangi texnologiyalar va muammolarni hal qilish, doimiy o‘sish va o‘rganishga intilish.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <p>© 2025 Rustam202</p>
+    <!-- Portfolio Section -->
+    <section class="bg-light py-5" id="portfolio">
+        <div class="container">
+            <h3 class="mb-4 text-primary">Eng so‘nggi ishlanmalarim</h3>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="project1.jpg" class="card-img-top" alt="Loyiha 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Smart Home System</h5>
+                            <p class="card-text">IoT asosida aqlli uy tizimi — sensorlar va boshqaruv.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="project2.jpg" class="card-img-top" alt="Loyiha 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Personal Website</h5>
+                            <p class="card-text">Bootstrap va JS asosida zamonaviy portfolio sayt.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="project3.jpg" class="card-img-top" alt="Loyiha 3">
+                        <div class="card-body">
+                            <h5 class="card-title">AI Chatbot</h5>
+                            <p class="card-text">Python va Tensorflow yordamida sun'iy intellekt chatbot yaratish.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5" id="contact">
+        <div class="container">
+            <h3 class="mb-4 text-primary">Aloqa uchun</h3>
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Ismingiz</label>
+                    <input type="text" class="form-control" id="name" placeholder="Ismingizni kiriting">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email manzilingiz</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email-ni kiriting">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Xabar</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Xabaringizni yozing"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Yuborish</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-3 mt-5">
+        <div class="container">
+            &copy; 2025 Rustam202. Barchasi o‘z huquqlari himoyalangan.
+        </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- Bootstrap Icons (Optional) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </body>
 </html>
