@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Rustam Saydaxmatov – Portfolio, dasturchi, injiner va tadqiqotchi.">
-  <meta name="google-site-verification" content="kT-SnUPF2DNxvwrfkqCYpCBqfMWWXYYsV8O6O_VTZmE" />
   <title>Rustam Saydaxmatov – Portfolio</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -16,45 +15,82 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    /* Asl dizaynni saqlab qolamiz */
+    /* Rut ranglar */
     :root {
       --bg-dark: #1a1a1a;
       --panel-dark: #212529;
-      --muted: #e0e0e0;
-      --accent: #90caf9;
-      --nav-bg: #222;
+      --muted-dark: #e0e0e0;
+      --accent-dark: #90caf9;
+      --nav-bg-dark: #222;
+
+      --bg-light: #fefefe;
+      --panel-light: #f8f9fa;
+      --muted-light: #222;
+      --accent-light: #1976d2;
+      --nav-bg-light: #e9ecef;
     }
     [data-bs-theme="dark"] {
       background-color: var(--bg-dark);
-      color: var(--muted);
+      color: var(--muted-dark);
+    }
+    [data-bs-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--muted-light);
     }
     body {
-      background-color: var(--bg-dark);
-      color: var(--muted);
-      transition: background-color .25s ease, color .25s ease;
+      background-color: inherit;
+      color: inherit;
+      transition: background-color .25s, color .25s;
     }
-    .navbar { background-color: var(--nav-bg) !important; }
-    .card { background: var(--panel-dark); border: none; transition: transform .15s ease; }
-    .card:hover { transform: translateY(-6px); }
-    footer { background-color: var(--nav-bg); }
-    .section-title { border-bottom: 2px solid #444; padding-bottom: .25em; margin-bottom: 1em; color: var(--accent); }
-    /* Katta ekranlarda rasm o'lchami saqlansin */
-    .profile-img { width: 140px; height: 140px; object-fit: cover; }
-    /* Responsiv container max width (asl Bootstrap ishlaydi) */
-    @media (max-width: 576px) {
-      .section-title { font-size: 1.1rem; }
+    .navbar {
+      background-color: var(--nav-bg-dark) !important;
+      transition: background-color .25s;
     }
+    [data-bs-theme="light"] .navbar {
+      background-color: var(--nav-bg-light) !important;
+    }
+    .card {
+      background: var(--panel-dark);
+      border: none;
+      transition: transform .15s, background .25s, color .25s;
+      color: var(--muted-dark);
+    }
+    [data-bs-theme="light"] .card {
+      background: var(--panel-light);
+      color: var(--muted-light);
+    }
+    .card:hover { transform: translateY(-6px);}
+    footer {
+      background-color: var(--nav-bg-dark);
+      color: #ccc;
+      transition: background-color .25s;
+    }
+    [data-bs-theme="light"] footer {
+      background-color: var(--nav-bg-light);
+      color: #111;
+    }
+    .section-title {
+      border-bottom: 2px solid #444;
+      padding-bottom: .25em;
+      margin-bottom: 1em;
+      color: var(--accent-dark);
+    }
+    [data-bs-theme="light"] .section-title {
+      border-bottom: 2px solid var(--accent-light);
+      color: var(--accent-light);
+    }
+    .profile-img { width: 140px; height: 140px; object-fit: cover;}
+    @media (max-width: 576px) { .section-title { font-size: 1.1rem;} }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">Rustam Saydaxmatov</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav_about">Men haqimda</a></li>
@@ -62,13 +98,9 @@
           <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav_projects">Loyihalar</a></li>
           <li class="nav-item"><a class="nav-link" href="#blog" data-i18n="nav_blog">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact">Aloqa</a></li>
-
-          <!-- Theme toggle -->
           <li class="nav-item ms-2">
             <button id="themeToggle" class="btn btn-outline-light btn-sm" aria-label="Toggle theme">☀️</button>
           </li>
-
-          <!-- Language dropdown -->
           <li class="nav-item dropdown ms-2">
             <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">🌐</a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
@@ -204,46 +236,46 @@
   </section>
 
   <!-- Footer -->
-  <footer class="text-center py-3 text-secondary">
+  <footer class="text-center py-3">
     <div>&copy; <span id="year">2025</span> Rustam Saydaxmatov. Ilmiy portfolio.</div>
   </footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
   <script>
     // INIT AOS
     AOS.init();
 
-    // ---------- THEME: kun/tun toggle (va localStorage) ----------
+    // ---- Theme switch (light/dark) ----
     const themeToggleBtn = document.getElementById('themeToggle');
     const htmlEl = document.documentElement;
-
-    // Set initial theme from localStorage or default 'dark'
+    // Toggle logic
     function applyTheme(theme) {
       htmlEl.setAttribute('data-bs-theme', theme);
-      // Button icon: if dark -> show sun icon to indicate switch to light, and vice versa
-      if (theme === 'dark') {
-        themeToggleBtn.textContent = '☀️'; // pressing will switch to light
-        themeToggleBtn.setAttribute('aria-label', 'Aktiv: dark. Switch to light');
-      } else {
-        themeToggleBtn.textContent = '🌙';
-        themeToggleBtn.setAttribute('aria-label', 'Aktiv: light. Switch to dark');
-      }
+      // Button icon and outline
+      themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+      // outline class update
+      themeToggleBtn.classList.remove('btn-outline-dark', 'btn-outline-light');
+      themeToggleBtn.classList.add(theme === 'dark' ? 'btn-outline-light' : 'btn-outline-dark');
+      themeToggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Aktiv: dark. Switch to light' : 'Aktiv: light. Switch to dark');
+      localStorage.setItem('site-theme', theme);
     }
 
-    const savedTheme = localStorage.getItem('site-theme') || 'dark';
+    // Initial theme: from localStorage or default to 'dark'
+    let savedTheme = localStorage.getItem('site-theme') || 'dark';
     applyTheme(savedTheme);
 
     themeToggleBtn.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-bs-theme') === 'dark' ? 'dark' : 'light';
+      const current = htmlEl.getAttribute('data-bs-theme');
       const next = current === 'dark' ? 'light' : 'dark';
       applyTheme(next);
-      localStorage.setItem('site-theme', next);
+    });
+    themeToggleBtn.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') themeToggleBtn.click();
     });
 
-    // ---------- I18N: til o'zgarishi va localStorage ----------
+    // ---- Translations for I18N ----
     const translations = {
       uz: {
         nav_about: "Men haqimda",
@@ -367,58 +399,46 @@
       }
     };
 
-    // Apply translations: updates textContent for data-i18n keys and placeholders for data-i18n-placeholder
     function applyTranslations(lang) {
-      // Text nodes
+      // text nodes
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key] !== undefined) {
           el.textContent = translations[lang][key];
         }
       });
-      // Placeholder nodes
+      // placeholder nodes
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (translations[lang] && translations[lang][key] !== undefined) {
           el.setAttribute('placeholder', translations[lang][key]);
         }
       });
-      // Update year maybe (keeps as is)
+      // body font family (faqat kosmetik)
+      if (lang === 'ru') {
+        document.body.style.fontFamily = 'Arial, sans-serif';
+      } else if (lang === 'en') {
+        document.body.style.fontFamily = 'Georgia, serif';
+      } else {
+        document.body.style.fontFamily = '';
+      }
     }
 
-    // Restore saved language or default 'uz'
-    const savedLang = localStorage.getItem('site-lang') || 'uz';
+    // Initial lang: from localStorage or default to 'uz'
+    let savedLang = localStorage.getItem('site-lang') || 'uz';
     applyTranslations(savedLang);
 
-    // Hook language selectors
     document.querySelectorAll('.lang-select').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const lang = btn.getAttribute('data-lang');
         applyTranslations(lang);
         localStorage.setItem('site-lang', lang);
-        // optional: small style tweak per language (only subtle to keep layout)
-        if (lang === 'ru') {
-          document.body.style.fontFamily = 'Arial, sans-serif';
-        } else if (lang === 'en') {
-          document.body.style.fontFamily = 'Georgia, serif';
-        } else {
-          document.body.style.fontFamily = '';
-        }
       });
     });
 
-    // Also update nav active language label when page loads (usability)
-    // (No visual label needed — dropdown shows languages.)
-
-    // Finally: fill current year
+    // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Accessibility: ensure theme toggle works with keyboard
-    themeToggleBtn.addEventListener('keyup', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') themeToggleBtn.click();
-    });
-
   </script>
 </body>
 </html>
