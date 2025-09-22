@@ -1,190 +1,424 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uz" data-bs-theme="dark">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rustam Saydaxmatov – Portfolio, dasturchi, injiner va tadqiqotchi. Loyihalar, ko‘nikmalar va blog.">
-  <meta name="keywords" content="Rustam Saydaxmatov, Portfolio, Dasturchi, Injiner, AI, IoT, Web">
-  <meta name="author" content="Rustam Saydaxmatov">
+  <meta name="description" content="Rustam Saydaxmatov – Portfolio, dasturchi, injiner va tadqiqotchi.">
   <meta name="google-site-verification" content="kT-SnUPF2DNxvwrfkqCYpCBqfMWWXYYsV8O6O_VTZmE" />
   <title>Rustam Saydaxmatov – Portfolio</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  
+
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <!-- AOS animatsiya -->
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    body { background-color: #1a1a1a; color: #e0e0e0; }
-    .navbar { background-color: #222 !important; }
-    .card { background: #212529; border: none; }
-    footer { background-color: #222; }
-    .section-title { border-bottom: 2px solid #444; padding-bottom: .25em; margin-bottom: 1em; color: #90caf9; }
+    /* Asl dizaynni saqlab qolamiz */
+    :root {
+      --bg-dark: #1a1a1a;
+      --panel-dark: #212529;
+      --muted: #e0e0e0;
+      --accent: #90caf9;
+      --nav-bg: #222;
+    }
+    [data-bs-theme="dark"] {
+      background-color: var(--bg-dark);
+      color: var(--muted);
+    }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--muted);
+      transition: background-color .25s ease, color .25s ease;
+    }
+    .navbar { background-color: var(--nav-bg) !important; }
+    .card { background: var(--panel-dark); border: none; transition: transform .15s ease; }
+    .card:hover { transform: translateY(-6px); }
+    footer { background-color: var(--nav-bg); }
+    .section-title { border-bottom: 2px solid #444; padding-bottom: .25em; margin-bottom: 1em; color: var(--accent); }
+    /* Katta ekranlarda rasm o'lchami saqlansin */
+    .profile-img { width: 140px; height: 140px; object-fit: cover; }
+    /* Responsiv container max width (asl Bootstrap ishlaydi) */
+    @media (max-width: 576px) {
+      .section-title { font-size: 1.1rem; }
+    }
   </style>
 </head>
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Rustam</a>
+      <a class="navbar-brand fw-bold" href="#">Rustam Saydaxmatov</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#about">Men haqimda</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Malakalar</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Loyihalar</a></li>
-          <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Aloqa</a></li>
-          <li class="nav-item">
-            <button id="themeToggle" class="btn btn-outline-light btn-sm ms-2">🌙</button>
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav_about">Men haqimda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills" data-i18n="nav_skills">Malakalar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav_projects">Loyihalar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog" data-i18n="nav_blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact">Aloqa</a></li>
+
+          <!-- Theme toggle -->
+          <li class="nav-item ms-2">
+            <button id="themeToggle" class="btn btn-outline-light btn-sm" aria-label="Toggle theme">☀️</button>
+          </li>
+
+          <!-- Language dropdown -->
+          <li class="nav-item dropdown ms-2">
+            <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">🌐</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+              <li><a class="dropdown-item lang-select" href="#" data-lang="uz">O‘zbekcha</a></li>
+              <li><a class="dropdown-item lang-select" href="#" data-lang="ru">Русский</a></li>
+              <li><a class="dropdown-item lang-select" href="#" data-lang="en">English</a></li>
+            </ul>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- About -->
+  <!-- About Section -->
   <section id="about" class="container py-5" data-aos="fade-up">
     <div class="row align-items-center">
       <div class="col-md-3 text-center">
-        <img src="rasm.jpg" alt="Rustamning rasmi" class="rounded-circle mb-3 shadow" width="140">
+        <img src="rasm.jpg" alt="Rustam" class="rounded-circle mb-3 shadow profile-img">
       </div>
       <div class="col-md-9">
-        <h1 class="section-title">Men haqimda</h1>
-        <p><strong>Ism:</strong> Rustam Saydaxmatov Shamsiddin o‘g‘li</p>
-        <p><strong>Daraja:</strong> Injiner / Dasturchi / Tadqiqotchi</p>
-        <p><strong>Soha:</strong> Matematika, Dasturiy injiniring, texnologiyalarni tadqiq etish, ilmiy tahlil</p>
+        <h1 class="section-title" data-i18n="about_title">Mutaxassis haqidagi ma'lumot</h1>
+        <p><strong data-i18n="label_name">Ism:</strong> <span data-i18n="name">Rustam Saydaxmatov Shamsiddin o‘g‘li</span></p>
+        <p><strong data-i18n="label_degree">Daraja:</strong> <span data-i18n="degree">Injiner / Dasturchi / Tadqiqotchi</span></p>
+        <p><strong data-i18n="label_field">Soha:</strong> <span data-i18n="field">Dasturiy injiniring, texnologiyalarni tadqiq etish, ilmiy tahlil</span></p>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
+  <!-- Skills Section -->
   <section id="skills" class="container py-5" data-aos="fade-up">
-    <h2 class="section-title">Asosiy malakalar</h2>
+    <h2 class="section-title" data-i18n="skills_title">Asosiy malakalar</h2>
     <div class="row">
       <div class="col-lg-4">
-        <div class="card mb-3 text-center p-3">
-          <i class="bi bi-terminal fs-1"></i>
-          <h5 class="my-2">Dasturlash tillari</h5>
-          <p>Python, C++, JavaScript, Bash</p>
+        <div class="card mb-3">
+          <div class="card-body text-center">
+            <i class="bi bi-terminal" style="font-size: 2rem;"></i>
+            <h5 class="my-2" data-i18n="skill_prog">Dasturlash tillari</h5>
+            <p data-i18n="skill_prog_text">Python, C++, JavaScript, Bash</p>
+          </div>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="card mb-3 text-center p-3">
-          <i class="bi bi-cpu fs-1"></i>
-          <h5 class="my-2">Texnologiyalar</h5>
-          <p>AI, IoT, Web Frameworks, Linux serverlar</p>
+        <div class="card mb-3">
+          <div class="card-body text-center">
+            <i class="bi bi-cpu" style="font-size: 2rem;"></i>
+            <h5 class="my-2" data-i18n="skill_tech">Texnologiyalar</h5>
+            <p data-i18n="skill_tech_text">AI, IoT, Web Frameworks, Linux serverlar</p>
+          </div>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="card mb-3 text-center p-3">
-          <i class="bi bi-mortarboard fs-1"></i>
-          <h5 class="my-2">Ilmiy yondashuvlar</h5>
-          <p>Tadqiqot, analitika, yangi bilimlarni egallash</p>
+        <div class="card mb-3">
+          <div class="card-body text-center">
+            <i class="bi bi-mortarboard" style="font-size: 2rem;"></i>
+            <h5 class="my-2" data-i18n="skill_science">Ilmiy yondashuvlar</h5>
+            <p data-i18n="skill_science_text">Tadqiqot, analitika, yangi bilimlarni egallash</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
+  <!-- Projects Section -->
   <section id="projects" class="container py-5" data-aos="fade-up">
-    <h2 class="section-title">Asosiy loyihalar</h2>
+    <h2 class="section-title" data-i18n="projects_title">Asosiy loyihalar</h2>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100 text-center p-3">
           <i class="bi bi-house-door fs-1"></i>
-          <h5>Smart Home System</h5>
-          <p>IoT asosida aqlli uy va sensorlar boshqaruvi.</p>
+          <h5 class="card-title" data-i18n="proj1_title">Smart Home System</h5>
+          <p class="card-text" data-i18n="proj1_text">IoT asosida aqlli uy va sensorlar boshqaruvi.</p>
         </div>
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100 text-center p-3">
           <i class="bi bi-globe fs-1"></i>
-          <h5>Personal Portfolio</h5>
-          <p>Bootstrap asosida zamonaviy shaxsiy sayt.</p>
+          <h5 class="card-title" data-i18n="proj2_title">Personal Portfolio</h5>
+          <p class="card-text" data-i18n="proj2_text">Bootstrap asosida zamonaviy shaxsiy sayt.</p>
         </div>
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100 text-center p-3">
           <i class="bi bi-robot fs-1"></i>
-          <h5>AI Chatbot</h5>
-          <p>Tensorflow yordamida sun'iy intellekt asosidagi dialog tizimi.</p>
+          <h5 class="card-title" data-i18n="proj3_title">AI Chatbot</h5>
+          <p class="card-text" data-i18n="proj3_text">Tensorflow yordamida sun'iy intellekt asosidagi dialog tizimi.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Blog -->
+  <!-- Blog Section -->
   <section id="blog" class="container py-5" data-aos="fade-up">
-    <h2 class="section-title">Blog / Yangiliklar</h2>
+    <h2 class="section-title" data-i18n="blog_title">Blog / Yangiliklar</h2>
     <div class="row">
       <div class="col-md-4 mb-3">
         <div class="card h-100 p-3">
-          <h5>📢 Ilk blog posti</h5>
-          <p>Saytimni yaratdim va endi ilmiy ishlanmalarimni ulashaman.</p>
+          <h5 data-i18n="blog1_title">📢 Ilk blog posti</h5>
+          <p data-i18n="blog1_text">Saytimni yaratdim va endi ilmiy ishlanmalarimni ulashaman.</p>
         </div>
       </div>
       <div class="col-md-4 mb-3">
         <div class="card h-100 p-3">
-          <h5>🤖 AI haqida</h5>
-          <p>Sun’iy intellektning bugungi va kelajakdagi imkoniyatlari haqida fikrlarim.</p>
+          <h5 data-i18n="blog2_title">🤖 AI haqida</h5>
+          <p data-i18n="blog2_text">Sun’iy intellektning bugungi va kelajakdagi imkoniyatlari haqida fikrlarim.</p>
         </div>
       </div>
       <div class="col-md-4 mb-3">
         <div class="card h-100 p-3">
-          <h5>📚 O‘qiyotgan kitoblarim</h5>
-          <p>Ilmiy va texnik kitoblar ro‘yxati bilan bo‘lishaman.</p>
+          <h5 data-i18n="blog3_title">📚 O‘qiyotgan kitoblarim</h5>
+          <p data-i18n="blog3_text">Ilmiy va texnik kitoblar ro‘yxati bilan bo‘lishaman.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section -->
   <section id="contact" class="container py-5" data-aos="fade-up">
-    <h2 class="section-title">Aloqa</h2>
+    <h2 class="section-title" data-i18n="contact_title">Aloqa</h2>
     <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="row g-3">
       <div class="col-md-6">
-        <input type="text" name="name" class="form-control" placeholder="Ismingiz" required>
+        <input type="text" name="name" class="form-control" placeholder="Ismingiz" data-i18n-placeholder="contact_name" required>
       </div>
       <div class="col-md-6">
-        <input type="email" name="email" class="form-control" placeholder="Email manzil" required>
+        <input type="email" name="email" class="form-control" placeholder="Email manzil" data-i18n-placeholder="contact_email" required>
       </div>
       <div class="col-12">
-        <textarea name="message" class="form-control" rows="4" placeholder="Xabaringiz" required></textarea>
+        <textarea name="message" class="form-control" rows="4" placeholder="Xabaringiz" data-i18n-placeholder="contact_message" required></textarea>
       </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Yuborish</button>
+        <button type="submit" class="btn btn-primary" data-i18n="contact_send">Yuborish</button>
       </div>
     </form>
   </section>
 
   <!-- Footer -->
   <footer class="text-center py-3 text-secondary">
-    <div>&copy; 2025 Rustam Saydaxmatov. Ilmiy portfolio.</div>
+    <div>&copy; <span id="year">2025</span> Rustam Saydaxmatov. Ilmiy portfolio.</div>
   </footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script>
+    // INIT AOS
     AOS.init();
-    // Dark/Light theme toggle
-    const btn = document.getElementById('themeToggle');
-    btn.addEventListener('click', () => {
-      const html = document.documentElement;
-      if (html.getAttribute('data-bs-theme') === 'dark') {
-        html.setAttribute('data-bs-theme', 'light');
-        btn.textContent = '🌙';
+
+    // ---------- THEME: kun/tun toggle (va localStorage) ----------
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    // Set initial theme from localStorage or default 'dark'
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-bs-theme', theme);
+      // Button icon: if dark -> show sun icon to indicate switch to light, and vice versa
+      if (theme === 'dark') {
+        themeToggleBtn.textContent = '☀️'; // pressing will switch to light
+        themeToggleBtn.setAttribute('aria-label', 'Aktiv: dark. Switch to light');
       } else {
-        html.setAttribute('data-bs-theme', 'dark');
-        btn.textContent = '☀️';
+        themeToggleBtn.textContent = '🌙';
+        themeToggleBtn.setAttribute('aria-label', 'Aktiv: light. Switch to dark');
       }
+    }
+
+    const savedTheme = localStorage.getItem('site-theme') || 'dark';
+    applyTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('data-bs-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('site-theme', next);
     });
+
+    // ---------- I18N: til o'zgarishi va localStorage ----------
+    const translations = {
+      uz: {
+        nav_about: "Men haqimda",
+        nav_skills: "Malakalar",
+        nav_projects: "Loyihalar",
+        nav_blog: "Blog",
+        nav_contact: "Aloqa",
+        about_title: "Mutaxassis haqidagi ma'lumot",
+        label_name: "Ism:",
+        name: "Rustam Saydaxmatov Shamsiddin o‘g‘li",
+        label_degree: "Daraja:",
+        degree: "Injiner / Dasturchi / Tadqiqotchi",
+        label_field: "Soha:",
+        field: "Dasturiy injiniring, texnologiyalarni tadqiq etish, ilmiy tahlil",
+        skills_title: "Asosiy malakalar",
+        skill_prog: "Dasturlash tillari",
+        skill_prog_text: "Python, C++, JavaScript, Bash",
+        skill_tech: "Texnologiyalar",
+        skill_tech_text: "AI, IoT, Web Frameworks, Linux serverlar",
+        skill_science: "Ilmiy yondashuvlar",
+        skill_science_text: "Tadqiqot, analitika, yangi bilimlarni egallash",
+        projects_title: "Asosiy loyihalar",
+        proj1_title: "Smart Home System",
+        proj1_text: "IoT asosida aqlli uy va sensorlar boshqaruvi.",
+        proj2_title: "Personal Portfolio",
+        proj2_text: "Bootstrap asosida zamonaviy shaxsiy sayt.",
+        proj3_title: "AI Chatbot",
+        proj3_text: "Tensorflow yordamida sun'iy intellekt asosidagi dialog tizimi.",
+        blog_title: "Blog / Yangiliklar",
+        blog1_title: "📢 Ilk blog posti",
+        blog1_text: "Saytimni yaratdim va endi ilmiy ishlanmalarimni ulashaman.",
+        blog2_title: "🤖 AI haqida",
+        blog2_text: "Sun’iy intellektning bugungi va kelajakdagi imkoniyatlari haqida fikrlarim.",
+        blog3_title: "📚 O‘qiyotgan kitoblarim",
+        blog3_text: "Ilmiy va texnik kitoblar ro‘yxati bilan bo‘lishaman.",
+        contact_title: "Aloqa",
+        contact_name: "Ismingiz",
+        contact_email: "Email manzil",
+        contact_message: "Xabaringiz",
+        contact_send: "Yuborish"
+      },
+      ru: {
+        nav_about: "Обо мне",
+        nav_skills: "Навыки",
+        nav_projects: "Проекты",
+        nav_blog: "Блог",
+        nav_contact: "Контакты",
+        about_title: "Информация о специалисте",
+        label_name: "Имя:",
+        name: "Рустам Сайдахматов Шамсиддин оглы",
+        label_degree: "Уровень:",
+        degree: "Инженер / Разработчик / Исследователь",
+        label_field: "Сфера:",
+        field: "Программная инженерия, исследование технологий, научный анализ",
+        skills_title: "Основные навыки",
+        skill_prog: "Языки программирования",
+        skill_prog_text: "Python, C++, JavaScript, Bash",
+        skill_tech: "Технологии",
+        skill_tech_text: "AI, IoT, Web Frameworks, Linux серверы",
+        skill_science: "Научный подход",
+        skill_science_text: "Исследования, аналитика, освоение новых знаний",
+        projects_title: "Основные проекты",
+        proj1_title: "Система умного дома",
+        proj1_text: "Управление умным домом и датчиками на базе IoT.",
+        proj2_title: "Личный портфолио",
+        proj2_text: "Современный личный сайт на Bootstrap.",
+        proj3_title: "AI Чатбот",
+        proj3_text: "Диалоговая система на основе Tensorflow.",
+        blog_title: "Блог / Новости",
+        blog1_title: "📢 Мой первый пост",
+        blog1_text: "Создал сайт и буду делиться научными разработками.",
+        blog2_title: "🤖 Про AI",
+        blog2_text: "Мысли о современных и будущих возможностях ИИ.",
+        blog3_title: "📚 Книги, которые я читаю",
+        blog3_text: "Список научных и технических книг.",
+        contact_title: "Контакты",
+        contact_name: "Ваше имя",
+        contact_email: "Email адрес",
+        contact_message: "Ваше сообщение",
+        contact_send: "Отправить"
+      },
+      en: {
+        nav_about: "About",
+        nav_skills: "Skills",
+        nav_projects: "Projects",
+        nav_blog: "Blog",
+        nav_contact: "Contact",
+        about_title: "About the specialist",
+        label_name: "Name:",
+        name: "Rustam Saydaxmatov Shamsiddin o‘g‘li",
+        label_degree: "Degree:",
+        degree: "Engineer / Developer / Researcher",
+        label_field: "Field:",
+        field: "Software engineering, technology research, scientific analysis",
+        skills_title: "Main skills",
+        skill_prog: "Programming languages",
+        skill_prog_text: "Python, C++, JavaScript, Bash",
+        skill_tech: "Technologies",
+        skill_tech_text: "AI, IoT, Web Frameworks, Linux servers",
+        skill_science: "Scientific approaches",
+        skill_science_text: "Research, analytics, learning new knowledge",
+        projects_title: "Key projects",
+        proj1_title: "Smart Home System",
+        proj1_text: "Smart home and sensor control based on IoT.",
+        proj2_title: "Personal Portfolio",
+        proj2_text: "Modern personal site built with Bootstrap.",
+        proj3_title: "AI Chatbot",
+        proj3_text: "Dialog system based on Tensorflow.",
+        blog_title: "Blog / News",
+        blog1_title: "📢 First blog post",
+        blog1_text: "I created this site and will share my scientific works.",
+        blog2_title: "🤖 About AI",
+        blog2_text: "Thoughts on present and future possibilities of AI.",
+        blog3_title: "📚 Books I'm reading",
+        blog3_text: "List of scientific and technical books.",
+        contact_title: "Contact",
+        contact_name: "Your name",
+        contact_email: "Email address",
+        contact_message: "Your message",
+        contact_send: "Send"
+      }
+    };
+
+    // Apply translations: updates textContent for data-i18n keys and placeholders for data-i18n-placeholder
+    function applyTranslations(lang) {
+      // Text nodes
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key] !== undefined) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      // Placeholder nodes
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key] !== undefined) {
+          el.setAttribute('placeholder', translations[lang][key]);
+        }
+      });
+      // Update year maybe (keeps as is)
+    }
+
+    // Restore saved language or default 'uz'
+    const savedLang = localStorage.getItem('site-lang') || 'uz';
+    applyTranslations(savedLang);
+
+    // Hook language selectors
+    document.querySelectorAll('.lang-select').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const lang = btn.getAttribute('data-lang');
+        applyTranslations(lang);
+        localStorage.setItem('site-lang', lang);
+        // optional: small style tweak per language (only subtle to keep layout)
+        if (lang === 'ru') {
+          document.body.style.fontFamily = 'Arial, sans-serif';
+        } else if (lang === 'en') {
+          document.body.style.fontFamily = 'Georgia, serif';
+        } else {
+          document.body.style.fontFamily = '';
+        }
+      });
+    });
+
+    // Also update nav active language label when page loads (usability)
+    // (No visual label needed — dropdown shows languages.)
+
+    // Finally: fill current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accessibility: ensure theme toggle works with keyboard
+    themeToggleBtn.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') themeToggleBtn.click();
+    });
+
   </script>
 </body>
 </html>
