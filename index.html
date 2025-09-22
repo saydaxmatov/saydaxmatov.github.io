@@ -1,85 +1,47 @@
 <!DOCTYPE html>
-<html lang="uz" data-bs-theme="dark">
+<html lang="uz" class="lang-uz" data-bs-theme="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rustam Saydaxmatov – Portfolio, dasturchi, injiner va tadqiqotchi.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rustam Saydaxmatov – Portfolio</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+  <link rel="icon" href="favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
-    /* Rut ranglar */
-    :root {
-      --bg-dark: #1a1a1a;
-      --panel-dark: #212529;
-      --muted-dark: #e0e0e0;
-      --accent-dark: #90caf9;
-      --nav-bg-dark: #222;
+    :root { --transition: 0.3s ease; }
+    body, .navbar, .card, footer {
+      transition: background-color var(--transition), color var(--transition);
+    }
+    /* O'zbek tilidagi dizayn */
+    html.lang-uz[data-bs-theme="dark"] {
+      --bg: #121212; --panel: #1e1e1e; --text: #90caf9; --nav: #0d47a1; --footer: #0a357a; --accent: #90caf9; --btn: #1565c0;
+    }
+    html.lang-uz[data-bs-theme="light"] {
+      --bg: #e3f2fd; --panel: #bbdefb; --text: #0d47a1; --nav: #90caf9; --footer: #42a5f5; --accent: #0d47a1; --btn: #1976d2;
+    }
+    /* Rus tilidagi dizayn */
+    html.lang-ru[data-bs-theme="dark"] {
+      --bg: #222831; --panel: #393e46; --text: #eeeeee; --nav: #00adb5; --footer: #008080; --accent: #00adb5; --btn: #00adb5;
+    }
+    html.lang-ru[data-bs-theme="light"] {
+      --bg: #f0ffff; --panel: #e0ffff; --text: #006666; --nav: #007777; --footer: #009999; --accent: #006666; --btn: #009999;
+    }
+    /* Ingliz tilidagi dizayn */
+    html.lang-en[data-bs-theme="dark"] {
+      --bg: #0f172a; --panel: #1e293b; --text: #cbd5e1; --nav: #334155; --footer: #475569; --accent: #60a5fa; --btn: #3b82f6;
+    }
+    html.lang-en[data-bs-theme="light"] {
+      --bg: #f8fafc; --panel: #e2e8f0; --text: #1e293b; --nav: #e0e7ff; --footer: #c7d2fe; --accent: #3b82f6; --btn: #2563eb;
+    }
 
-      --bg-light: #fefefe;
-      --panel-light: #f8f9fa;
-      --muted-light: #222;
-      --accent-light: #1976d2;
-      --nav-bg-light: #e9ecef;
-    }
-    [data-bs-theme="dark"] {
-      background-color: var(--bg-dark);
-      color: var(--muted-dark);
-    }
-    [data-bs-theme="light"] {
-      background-color: var(--bg-light);
-      color: var(--muted-light);
-    }
-    body {
-      background-color: inherit;
-      color: inherit;
-      transition: background-color .25s, color .25s;
-    }
-    .navbar {
-      background-color: var(--nav-bg-dark) !important;
-      transition: background-color .25s;
-    }
-    [data-bs-theme="light"] .navbar {
-      background-color: var(--nav-bg-light) !important;
-    }
-    .card {
-      background: var(--panel-dark);
-      border: none;
-      transition: transform .15s, background .25s, color .25s;
-      color: var(--muted-dark);
-    }
-    [data-bs-theme="light"] .card {
-      background: var(--panel-light);
-      color: var(--muted-light);
-    }
-    .card:hover { transform: translateY(-6px);}
-    footer {
-      background-color: var(--nav-bg-dark);
-      color: #ccc;
-      transition: background-color .25s;
-    }
-    [data-bs-theme="light"] footer {
-      background-color: var(--nav-bg-light);
-      color: #111;
-    }
-    .section-title {
-      border-bottom: 2px solid #444;
-      padding-bottom: .25em;
-      margin-bottom: 1em;
-      color: var(--accent-dark);
-    }
-    [data-bs-theme="light"] .section-title {
-      border-bottom: 2px solid var(--accent-light);
-      color: var(--accent-light);
-    }
-    .profile-img { width: 140px; height: 140px; object-fit: cover;}
+    body { background: var(--bg); color: var(--text); }
+    .navbar { background-color: var(--nav) !important; }
+    .card { background-color: var(--panel); color: var(--text); border: none; }
+    .card:hover { transform: translateY(-6px); transition: transform 0.15s ease; }
+    footer { background-color: var(--footer); color: var(--text); }
+    .section-title { border-bottom: 2px solid var(--accent); color: var(--accent); padding-bottom: .25em; margin-bottom: 1em; }
+    .profile-img { width: 140px; height: 140px; object-fit: cover; }
     @media (max-width: 576px) { .section-title { font-size: 1.1rem;} }
   </style>
 </head>
@@ -102,8 +64,8 @@
             <button id="themeToggle" class="btn btn-outline-light btn-sm" aria-label="Toggle theme">☀️</button>
           </li>
           <li class="nav-item dropdown ms-2">
-            <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">🌐</a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">🌐</a>
+            <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item lang-select" href="#" data-lang="uz">O‘zbekcha</a></li>
               <li><a class="dropdown-item lang-select" href="#" data-lang="ru">Русский</a></li>
               <li><a class="dropdown-item lang-select" href="#" data-lang="en">English</a></li>
@@ -118,10 +80,10 @@
   <section id="about" class="container py-5" data-aos="fade-up">
     <div class="row align-items-center">
       <div class="col-md-3 text-center">
-        <img src="rasm.jpg" alt="Rustam" class="rounded-circle mb-3 shadow profile-img">
+        <img src="rasm.jpg" alt="Rustam" class="rounded-circle mb-3 shadow profile-img" />
       </div>
       <div class="col-md-9">
-        <h1 class="section-title" data-i18n="about_title">Mutaxassis haqidagi ma'lumot</h1>
+        <h1 class="section-title" data-i18n="about_title">Mutaxassis haqidagi maʼlumot</h1>
         <p><strong data-i18n="label_name">Ism:</strong> <span data-i18n="name">Rustam Saydaxmatov Shamsiddin o‘g‘li</span></p>
         <p><strong data-i18n="label_degree">Daraja:</strong> <span data-i18n="degree">Injiner / Dasturchi / Tadqiqotchi</span></p>
         <p><strong data-i18n="label_field">Soha:</strong> <span data-i18n="field">Dasturiy injiniring, texnologiyalarni tadqiq etish, ilmiy tahlil</span></p>
@@ -236,46 +198,18 @@
   </section>
 
   <!-- Footer -->
-  <footer class="text-center py-3">
-    <div>&copy; <span id="year">2025</span> Rustam Saydaxmatov. Ilmiy portfolio.</div>
-  </footer>
+  <footer class="text-center py-3">&copy; <span id="year"></span> Rustam Saydaxmatov</footer>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // INIT AOS
     AOS.init();
 
-    // ---- Theme switch (light/dark) ----
-    const themeToggleBtn = document.getElementById('themeToggle');
     const htmlEl = document.documentElement;
-    // Toggle logic
-    function applyTheme(theme) {
-      htmlEl.setAttribute('data-bs-theme', theme);
-      // Button icon and outline
-      themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
-      // outline class update
-      themeToggleBtn.classList.remove('btn-outline-dark', 'btn-outline-light');
-      themeToggleBtn.classList.add(theme === 'dark' ? 'btn-outline-light' : 'btn-outline-dark');
-      themeToggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Aktiv: dark. Switch to light' : 'Aktiv: light. Switch to dark');
-      localStorage.setItem('site-theme', theme);
-    }
+    const themeToggleBtn = document.getElementById("themeToggle");
+    const langButtons = document.querySelectorAll(".lang-select");
+    const form = document.getElementById("contactForm");
 
-    // Initial theme: from localStorage or default to 'dark'
-    let savedTheme = localStorage.getItem('site-theme') || 'dark';
-    applyTheme(savedTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-bs-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-    });
-    themeToggleBtn.addEventListener('keyup', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') themeToggleBtn.click();
-    });
-
-    // ---- Translations for I18N ----
     const translations = {
       uz: {
         nav_about: "Men haqimda",
@@ -283,7 +217,7 @@
         nav_projects: "Loyihalar",
         nav_blog: "Blog",
         nav_contact: "Aloqa",
-        about_title: "Mutaxassis haqidagi ma'lumot",
+        about_title: "Mutaxassis haqidagi maʼlumot",
         label_name: "Ism:",
         name: "Rustam Saydaxmatov Shamsiddin o‘g‘li",
         label_degree: "Daraja:",
@@ -400,21 +334,18 @@
     };
 
     function applyTranslations(lang) {
-      // text nodes
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key] !== undefined) {
           el.textContent = translations[lang][key];
         }
       });
-      // placeholder nodes
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (translations[lang] && translations[lang][key] !== undefined) {
           el.setAttribute('placeholder', translations[lang][key]);
         }
       });
-      // body font family (faqat kosmetik)
       if (lang === 'ru') {
         document.body.style.fontFamily = 'Arial, sans-serif';
       } else if (lang === 'en') {
@@ -424,27 +355,54 @@
       }
     }
 
-    // Initial lang: from localStorage or default to 'uz'
-    let savedLang = localStorage.getItem('site-lang') || 'uz';
-    applyTranslations(savedLang);
+    function updateLangClass(lang) {
+      htmlEl.classList.remove('lang-uz', 'lang-ru', 'lang-en');
+      htmlEl.classList.add('lang-' + lang);
+    }
 
-    document.querySelectorAll('.lang-select').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+    function setLanguage(lang) {
+      applyTranslations(lang);
+      updateLangClass(lang);
+      localStorage.setItem('site-lang', lang);
+    }
+
+    let savedLang = localStorage.getItem('site-lang') || 'uz';
+    setLanguage(savedLang);
+
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', e => {
         e.preventDefault();
-        const lang = btn.getAttribute('data-lang');
-        applyTranslations(lang);
-        localStorage.setItem('site-lang', lang);
+        setLanguage(btn.getAttribute('data-lang'));
       });
     });
 
-    // Current year in footer
+    // Theme toggle
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-bs-theme', theme);
+      themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+      themeToggleBtn.classList.remove('btn-outline-dark', 'btn-outline-light');
+      themeToggleBtn.classList.add(theme === 'dark' ? 'btn-outline-light' : 'btn-outline-dark');
+      themeToggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      localStorage.setItem('site-theme', theme);
+    }
+
+    let savedTheme = localStorage.getItem('site-theme') || 'dark';
+    applyTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const newTheme = htmlEl.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    });
+    themeToggleBtn.addEventListener('keyup', e => {
+      if (e.key === 'Enter' || e.key === ' ') themeToggleBtn.click();
+    });
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Telegram bot orqali xabar yuborish funksiyasi
+    // Telegram bot API - backend orqali tavsiya qilinadi!
     const botToken = '7532192722:AAFzKSibYfgB2yA5ltGyZKwzUu_0dB1Vffk';
-    const chatId = '7217509907'; // Sizning chat ID (odatda - kabi manzil bo‘ladi)
+    const chatId = '7217509907';
 
-    const form = document.getElementById('contactForm');
     form.addEventListener('submit', e => {
       e.preventDefault();
 
@@ -453,10 +411,8 @@
       const email = formData.get('email');
       const message = formData.get('message');
 
-      const telegramMessage = 
-        `Yangi xabar:\nIsm: ${name}\nEmail: ${email}\nXabar: ${message}`;
+      const telegramMessage = `Yangi xabar:\nIsm: ${name}\nEmail: ${email}\nXabar: ${message}`;
 
-      // Telegram bot API orqali xabar yuborish
       fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
