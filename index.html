@@ -219,15 +219,15 @@
   <!-- Contact Section -->
   <section id="contact" class="container py-5" data-aos="fade-up">
     <h2 class="section-title" data-i18n="contact_title">Aloqa</h2>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="row g-3">
+    <form id="contactForm" class="row g-3">
       <div class="col-md-6">
-        <input type="text" name="name" class="form-control" placeholder="Ismingiz" data-i18n-placeholder="contact_name" required>
+        <input type="text" class="form-control" name="name" placeholder="" data-i18n-placeholder="contact_name" required />
       </div>
       <div class="col-md-6">
-        <input type="email" name="email" class="form-control" placeholder="Email manzil" data-i18n-placeholder="contact_email" required>
+        <input type="email" class="form-control" name="email" placeholder="" data-i18n-placeholder="contact_email" required />
       </div>
       <div class="col-12">
-        <textarea name="message" class="form-control" rows="4" placeholder="Xabaringiz" data-i18n-placeholder="contact_message" required></textarea>
+        <textarea class="form-control" name="message" rows="4" placeholder="" data-i18n-placeholder="contact_message" required></textarea>
       </div>
       <div class="col-12">
         <button type="submit" class="btn btn-primary" data-i18n="contact_send">Yuborish</button>
@@ -439,6 +439,44 @@
 
     // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Telegram bot orqali xabar yuborish funksiyasi
+    const botToken = '7532192722:AAFzKSibYfgB2yA5ltGyZKwzUu_0dB1Vffk';
+    const chatId = '7217509907'; // Sizning chat ID (odatda - kabi manzil bo‘ladi)
+
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+
+      const telegramMessage = 
+        `Yangi xabar:\nIsm: ${name}\nEmail: ${email}\nXabar: ${message}`;
+
+      // Telegram bot API orqali xabar yuborish
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: telegramMessage,
+          parse_mode: 'HTML'
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.ok) {
+          alert('Xabar yuborildi!');
+          form.reset();
+        } else {
+          alert('Xabar yuborishda xato yuz berdi.');
+        }
+      })
+      .catch(() => alert('Xabar yuborishda xato yuz berdi.'));
+    });
   </script>
 </body>
 </html>
