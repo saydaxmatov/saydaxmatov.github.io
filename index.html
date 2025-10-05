@@ -42,7 +42,13 @@
     footer { background-color: var(--footer); color: var(--text); }
     .section-title { border-bottom: 2px solid var(--accent); color: var(--accent); padding-bottom: .25em; margin-bottom: 1em; }
     .profile-img { width: 240px; height: 240px; object-fit: cover; }
-    @media (max-width: 576px) { .section-title { font-size: 1.1rem;} }
+    .pdf-container { height: 600px; border: 1px solid var(--accent); border-radius: 8px; overflow: hidden; }
+    .pdf-container iframe { width: 100%; height: 100%; border: none; }
+    .pdf-actions { margin-top: 1rem; }
+    @media (max-width: 576px) { 
+      .section-title { font-size: 1.1rem;} 
+      .pdf-container { height: 400px; }
+    }
   </style>
 </head>
 <body>
@@ -58,6 +64,7 @@
           <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav_about">Men haqimda</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills" data-i18n="nav_skills">Malakalar</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav_projects">Loyihalar</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume" data-i18n="nav_resume">Rezyume</a></li>
           <li class="nav-item"><a class="nav-link" href="#blog" data-i18n="nav_blog">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact">Aloqa</a></li>
           <li class="nav-item ms-2">
@@ -159,6 +166,22 @@
     </div>
   </section>
 
+  <!-- Resume Section -->
+  <section id="resume" class="container py-5" data-aos="fade-up">
+    <h2 class="section-title" data-i18n="resume_title">Rezyume</h2>
+    <div class="pdf-container">
+      <iframe src="./shaxsiy_qolyozma.pdf" title="Rustam Saydaxmatov Rezyume"></iframe>
+    </div>
+    <div class="pdf-actions text-center">
+      <a href="./shaxsiy_qolyozma.pdf" download class="btn btn-primary me-2" data-i18n="resume_download">
+        <i class="bi bi-download me-1"></i> Yuklab olish
+      </a>
+      <a href="./shaxsiy_qolyozma.pdf" target="_blank" class="btn btn-outline-primary" data-i18n="resume_open">
+        <i class="bi bi-box-arrow-up-right me-1"></i> Yangi oynada ochish
+      </a>
+    </div>
+  </section>
+
   <!-- Blog Section -->
   <section id="blog" class="container py-5" data-aos="fade-up">
     <h2 class="section-title" data-i18n="blog_title">Blog / Yangiliklar</h2>
@@ -172,13 +195,13 @@
       <div class="col-md-4 mb-3">
         <div class="card h-100 p-3">
           <h5 data-i18n="blog2_title">🤖 AI haqida</h5>
-          <p data-i18n="blog2_text">Sun’iy intellektning bugungi va kelajakdagi imkoniyatlari haqida fikrlarim.</p>
+          <p data-i18n="blog2_text">Sun'iy intellektning bugungi va kelajakdagi imkoniyatlari haqida fikrlarim.</p>
         </div>
       </div>
       <div class="col-md-4 mb-3">
         <div class="card h-100 p-3">
-          <h5 data-i18n="blog3_title">📚 O‘qiyotgan kitoblarim</h5>
-          <p data-i18n="blog3_text">Ilmiy va texnik kitoblar ro‘yxati bilan bo‘lishaman.</p>
+          <h5 data-i18n="blog3_title">📚 O'qiyotgan kitoblarim</h5>
+          <p data-i18n="blog3_text">Ilmiy va texnik kitoblar ro'yxati bilan bo'lishaman.</p>
         </div>
       </div>
     </div>
@@ -220,11 +243,12 @@
         nav_about: "Men haqimda",
         nav_skills: "Malakalar",
         nav_projects: "Loyihalar",
+        nav_resume: "Rezyume",
         nav_blog: "Blog",
         nav_contact: "Aloqa",
         about_title: "Mutaxassis haqidagi maʼlumot",
         label_name: "Ism:",
-        name: "Rustam Saydaxmatov Shamsiddin o‘g‘li",
+        name: "Rustam Saydaxmatov Shamsiddin o'g'li",
         label_degree: "Daraja:",
         degree: "Injiner / Dasturchi / Tadqiqotchi",
         label_field: "Soha:",
@@ -243,13 +267,16 @@
         proj2_text: "Bootstrap asosida zamonaviy shaxsiy sayt.",
         proj3_title: "AI Chatbot",
         proj3_text: "Tensorflow yordamida sun'iy intellekt asosidagi dialog tizimi.",
+        resume_title: "Rezyume",
+        resume_download: "Yuklab olish",
+        resume_open: "Yangi oynada ochish",
         blog_title: "Blog / Yangiliklar",
         blog1_title: "📢 Ilk blog posti",
         blog1_text: "Saytimni yaratdim va endi ilmiy ishlanmalarimni ulashaman.",
         blog2_title: "🤖 AI haqida",
-        blog2_text: "Sun’iy intellektning bugungi va kelajakdagi imkoniyatlari haqida fikrlarim.",
-        blog3_title: "📚 O‘qiyotgan kitoblarim",
-        blog3_text: "Ilmiy va texnik kitoblar ro‘yxati bilan bo‘lishaman.",
+        blog2_text: "Sun'iy intellektning bugungi va kelajakdagi imkoniyatlari haqida fikrlarim.",
+        blog3_title: "📚 O'qiyotgan kitoblarim",
+        blog3_text: "Ilmiy va texnik kitoblar ro'yxati bilan bo'lishaman.",
         contact_title: "Aloqa",
         contact_name: "Ismingiz",
         contact_email: "Email manzil",
@@ -260,6 +287,7 @@
         nav_about: "Обо мне",
         nav_skills: "Навыки",
         nav_projects: "Проекты",
+        nav_resume: "Резюме",
         nav_blog: "Блог",
         nav_contact: "Контакты",
         about_title: "Информация о специалисте",
@@ -283,6 +311,9 @@
         proj2_text: "Современный личный сайт на Bootstrap.",
         proj3_title: "AI Чатбот",
         proj3_text: "Диалоговая система на основе Tensorflow.",
+        resume_title: "Резюме",
+        resume_download: "Скачать",
+        resume_open: "Открыть в новом окне",
         blog_title: "Блог / Новости",
         blog1_title: "📢 Мой первый пост",
         blog1_text: "Создал сайт и буду делиться научными разработками.",
@@ -300,11 +331,12 @@
         nav_about: "About",
         nav_skills: "Skills",
         nav_projects: "Projects",
+        nav_resume: "Resume",
         nav_blog: "Blog",
         nav_contact: "Contact",
         about_title: "About the specialist",
         label_name: "Name:",
-        name: "Rustam Saydaxmatov Shamsiddin o‘g‘li",
+        name: "Rustam Saydaxmatov Shamsiddin o'g'li",
         label_degree: "Degree:",
         degree: "Engineer / Developer / Researcher",
         label_field: "Field:",
@@ -323,6 +355,9 @@
         proj2_text: "Modern personal site built with Bootstrap.",
         proj3_title: "AI Chatbot",
         proj3_text: "Dialog system based on Tensorflow.",
+        resume_title: "Resume",
+        resume_download: "Download",
+        resume_open: "Open in new window",
         blog_title: "Blog / News",
         blog1_title: "📢 First blog post",
         blog1_text: "I created this site and will share my scientific works.",
